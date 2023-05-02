@@ -24,7 +24,7 @@ checkAll.addEventListener('click', function() {
 })
 
 checkOffContainer.addEventListener('input', function() {
-    console.log(event.target.getAttribute('name'));
+    // console.log(event.target.getAttribute('name'));
     toggleCheckAllButton();
 })
 
