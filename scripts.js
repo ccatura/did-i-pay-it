@@ -2,6 +2,18 @@ var months = document.querySelectorAll('.month');
 var checkOffContainer = document.querySelector('.checkoff-container');
 var checkAll = document.getElementById('check-all');
 var allChecks = document.querySelectorAll('.check input');
+var autosave = document.getElementById('autosave');
+var autosaveInterval = 6;
+
+var x = setInterval(function() {
+        if(autosaveInterval > 1) {
+            autosaveInterval -= 1;
+            autosave.innerText = " in... " + autosaveInterval;
+        } else {
+            autosave.innerText = "d!";
+            //Here we send the form data to the DB to
+        }
+}, 1000);
 
 
 checkSize();
@@ -11,6 +23,7 @@ window.addEventListener('resize', function() {
 })
 
 checkAll.addEventListener('click', function() {
+    autosaveInterval = 6;
     if (!toggleCheckAllButton()) {
         allChecks.forEach( e => {
             e.checked = true;
@@ -24,7 +37,8 @@ checkAll.addEventListener('click', function() {
 })
 
 checkOffContainer.addEventListener('input', function() {
-    // console.log(event.target.getAttribute('name'));
+    autosaveInterval = 6;
+    console.log(event.target.getAttribute('name'));
     toggleCheckAllButton();
 })
 
