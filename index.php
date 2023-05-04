@@ -1,3 +1,6 @@
+<?php
+    include_once("db.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +12,9 @@
     <title>Document</title>
 </head>
 <body>
+
+
+
     <div>Auto Save<span id="autosave"></span></div>
 
     <div class="checkoff-container">
@@ -88,10 +94,55 @@
             </div>
 
         </div>
-<div><button id="check-all">Check All</button></div>
+        <div><button id="check-all">Check All</button></div>
 
 
     </div>
+
+    <?php
+    $result = mysqli_query($conn,
+    "SELECT    payer.user_name,\n"
+    . "		   board.name,\n"
+    . "        board_row.january,\n"
+    . "        board_row.february,\n"
+    . "        board_row.march,\n"
+    . "        board_row.april,\n"
+    . "        board_row.may,\n"
+    . "        board_row.june,\n"
+    . "        board_row.july,\n"
+    . "        board_row.august,\n"
+    . "        board_row.september,\n"
+    . "        board_row.october,\n"
+    . "        board_row.november,\n"
+    . "        board_row.december\n"
+    . "FROM payer\n"
+    . "INNER JOIN board ON board.payer_id = payer.user_name\n"
+    . "INNER JOIN board_row on board_row.payer_id = payer.user_name\n"
+    . "WHERE board.id = 1;"
+    );
+
+    while ($row = mysqli_fetch_array($result)) {
+        echo $row['user_name'] . " " . $row['name'] . " " . $row['january'] . " " . $row['february'] . " " . $row['march'] . " " . $row['april'] . " " . $row['may'] . " " . $row['june'] . " " . $row['july'] . " " . $row['august'] . " " . $row['september'] . " " . $row['october'] . " " . $row['november'] . " " . $row['december'] . "<br>";
+
+        $checkbox_group = '';
+
+        foreach ($row as $key => $value) {
+            if (is_int($key) && $key > 1) {
+                // echo ' key: ' . $key . ' value: ' . $value . '<br>';
+                $checkbox_group .=  '<input type="checkbox" name="check-1-1"';
+
+                if($row[$key] == 1) {
+                    $checkbox_group .= 'checked';
+                } else {
+                    $checkbox_group .= 'unchecked';
+                }
+
+                $checkbox_group .= '>';
+            }
+        }
+        echo $checkbox_group . '<br>';
+    }
+    ?>
 
 
 </body>
