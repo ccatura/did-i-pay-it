@@ -3,18 +3,33 @@ var checkOffContainer = document.querySelector('.checkoff-container');
 var checkAll = document.getElementById('check-all');
 var allChecks = document.querySelectorAll('.check input');
 var autosave = document.getElementById('autosave');
-var autosaveInterval = 6;
+var x;
 
-var x = setInterval(function() {
+function countdown() {
+    var autosaveInterval = 6;
+    clearInterval(x);
+    x = setInterval(function() {
         if(autosaveInterval > 1) {
             autosaveInterval -= 1;
             autosave.innerText = " in... " + autosaveInterval;
         } else {
             autosave.innerText = "d!";
             //Here we send the form data to the DB to
-        }
-}, 1000);
+            // window.location = "/database-write.php";
 
+
+            // AJAX CALL
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/database-write.php");
+            xhr.onload = function () {
+                console.log(this.response);
+            };
+            xhr.send('hello');
+
+            clearInterval(x);
+        }
+    }, 1000);
+}
 
 checkSize();
 
@@ -23,7 +38,7 @@ window.addEventListener('resize', function() {
 })
 
 checkAll.addEventListener('click', function() {
-    autosaveInterval = 6;
+    countdown();
     if (!toggleCheckAllButton()) {
         allChecks.forEach( e => {
             e.checked = true;
@@ -37,7 +52,7 @@ checkAll.addEventListener('click', function() {
 })
 
 checkOffContainer.addEventListener('input', function() {
-    autosaveInterval = 6;
+    countdown();
     console.log(event.target.getAttribute('name'));
     toggleCheckAllButton();
 })
