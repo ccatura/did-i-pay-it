@@ -24,7 +24,7 @@ function countdown() {
             xhr.onload = function () {
                 console.log(this.response);
             };
-            xhr.send('hello');
+            xhr.send();
 
             clearInterval(x);
         }
