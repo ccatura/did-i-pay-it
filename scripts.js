@@ -72,7 +72,7 @@ function countdown() {
 
             // AJAX CALL
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "./database-write.php");
+            xhr.open("POST", "https://charliecatura.com/apps/did-i-pay-it/database-write.php");
             xhr.onload = function () {
                 console.log(this.response);
             };
