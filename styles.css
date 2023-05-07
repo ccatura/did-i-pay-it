@@ -77,3 +77,26 @@ body {
 .desc input:focus {
     background-color: yellow;
 }
+
+
+
+
+
+
+@media screen and (max-width: 550px) {
+    .check input {
+        transform: scale(1.5);
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .check input {
+        transform: scale(1.2);
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .check input {
+        transform: scale(1);
+    }
+}

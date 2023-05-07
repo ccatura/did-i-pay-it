@@ -42,9 +42,11 @@
                 $board = $_GET["board"];
                 try {
                     $result = mysqli_query($conn,
-                    "SELECT    payer.user_name,\n"
-                    . "		   board.name,\n"
-                    . "		   payee.name,\n"
+                    "SELECT    board_row.id as 'board_row_id',\n"
+                    . "		   payee.id as 'payee_id',\n"
+                    . "		   payee.name as 'payee_name',\n"
+                    . "		   board.name as 'board_name',\n"
+                    . "		   payer.user_name,\n"
                     . "        board_row.january,\n"
                     . "        board_row.february,\n"
                     . "        board_row.march,\n"
@@ -65,27 +67,32 @@
                     );
 
 
-                    $starting_index = 2;
-                    $row_index = 1;
+                    $starting_index = 4;
                     while ($row = mysqli_fetch_array($result)) {
-                        $checkbox_group_html = '';
-                        echo '<div class="row">';
-                        echo '<div class="desc"><input type="text" value="' . $row['name'] . '" name="desc-' . $row_index . '"></div>';
+                        $payee_name             = $row['payee_name'];
+                        $payee_id               = $row['payee_id'];
+                        $payer_id               = $row['user_name'];
+                        $board_row_id           = $row['board_row_id'];
+                        $checkbox_group_html    = '';
+
+                        echo '<div class="row" row-id="' . $board_row_id . '">';
+                        echo '<div class="desc"><input class="payee" type="text" value="' . $payee_name . '" row-id="' . $board_row_id . '" payee-id="' . $payee_id . '"></div>';
                         echo '<div class="checks-container">';
+
                         foreach ($row as $key => $value) {
-                            $col_index =  (int)$key -$starting_index;
                             if (is_int($key) && $key > $starting_index) {
-                                $checkbox_group_html .=  '<div class="check"><input type="checkbox" name="check-' . $col_index . '-' . $row_index . '"';
+                                $month_index = $key - $starting_index;
+                                $month_name = strtolower(date('F', mktime(0, 0, 0, $month_index, 10)));
+                                $checkbox_group_html .=  '<div class="check"><input class="checkbox" type="checkbox" id="' . $board_row_id . '-' . $month_name . '"';
                                 if($row[$key] == 1) {
                                     $checkbox_group_html .= 'checked';
                                 } else {
                                     $checkbox_group_html .= '';
                                 }
-                                $checkbox_group_html .= '></div>';
+                                $checkbox_group_html .= ' row-id="' . $board_row_id . '" checkbox-id="' . $month_name . '" checked-id="' . $row[$key] . '"></div>';
                             }
                         }
                         echo $checkbox_group_html . '</div></div>';
-                        $row_index += 1;
                     }
                 }
                 catch(Exception $e) {
