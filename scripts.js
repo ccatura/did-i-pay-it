@@ -72,7 +72,7 @@ function countdown() {
 
             // AJAX CALL
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/database-write.php");
+            xhr.open("POST", "./database-write.php");
             xhr.onload = function () {
                 console.log(this.response);
             };
