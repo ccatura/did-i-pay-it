@@ -1,10 +1,12 @@
 <?php
 include_once 'db.php';
-   $api_url = 'https://random-word-api.herokuapp.com/word';
-   $json_data = file_get_contents($api_url);
-   $response_data = json_decode($json_data);
-   $the_word = $response_data;
-   $name = ucfirst($the_word[0]);
+header('Access-Control-Allow-Origin: *');
+
+   // $api_url = 'https://random-word-api.herokuapp.com/word';
+   // $json_data = file_get_contents($api_url);
+   // $response_data = json_decode($json_data);
+   // $the_word = $response_data;
+   // $name = ucfirst($the_word[0]);
 
 
    // Gets the data passed from the JS file
