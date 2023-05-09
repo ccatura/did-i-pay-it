@@ -1,5 +1,5 @@
 <?php
-    include_once("db.php");
+    include_once("./db.php");
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
 
 
 
-    <form action="list.php" method="post">
+    <form action="./list.php" method="post">
         <div>Login</div>
         <div>User Name</div>
         <div><input type="text" name="user"></div>

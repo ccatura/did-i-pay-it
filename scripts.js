@@ -100,7 +100,7 @@ function countdown() {
 
             // AJAX CALL
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/database-commit.php");
+            xhr.open("POST", "./database-commit.php");
             xhr.onload = function () {
                 console.log(this.response);
             };

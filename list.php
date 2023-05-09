@@ -1,5 +1,5 @@
 <?php
-include_once 'db.php';
+include_once './db.php';
 
 $post_data = file_get_contents('php://input');
 echo 'User Name: ' . $_POST['user'];
