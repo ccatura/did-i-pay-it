@@ -5,6 +5,14 @@ var allChecks = document.querySelectorAll('.check input');
 var autosave = document.getElementById('autosave');
 var x;
 
+
+// Get query string
+const queryParams = new URLSearchParams(window.location.search);
+var user = queryParams.get('user');
+var board = queryParams.get('board');
+
+
+
 checkSize();
 
 window.addEventListener('resize', function() {
@@ -63,16 +71,18 @@ function countdown() {
                     if (rows[a].getAttribute('row-id') == payees[b].getAttribute('row-id')) {
                         for (var c = 0; c < checkboxes.length; c++) { // All checkboxes for above payee
                             if (payees[b].getAttribute('row-id') == checkboxes[c].getAttribute('row-id')) { // Each checkbox individually
-                                data.push({row_id:rows[a].getAttribute('row-id'), payee_id:payees[b].getAttribute('payee-id'), checkbox_id:checkboxes[c].checked});
+                                data.push({board_id:board, row_id:rows[a].getAttribute('row-id'), payee_id:payees[b].getAttribute('payee-id'), checkbox_id:checkboxes[c].checked});
                             }
                         }
                     }
                 }
             }
 
+            // console.log(data);
+
             // AJAX CALL
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "https://charliecatura.com/apps/did-i-pay-it/database-write.php");
+            xhr.open("POST", "/database-commit.php");
             xhr.onload = function () {
                 console.log(this.response);
             };

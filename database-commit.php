@@ -1,7 +1,8 @@
 <?php
 include_once 'db.php';
-header('Access-Control-Allow-Origin: *');
+// header('Access-Control-Allow-Origin: *');
 
+   // Temporary code to get random words
    // $api_url = 'https://random-word-api.herokuapp.com/word';
    // $json_data = file_get_contents($api_url);
    // $response_data = json_decode($json_data);
@@ -18,9 +19,9 @@ header('Access-Control-Allow-Origin: *');
    $count = 0;
 
 
-$row_count = 0;
-$month_count = 1;
-$prev = '';
+   $row_count = 0;
+   $month_count = 1;
+   $prev = '';
 
       for ($i=0; $i < count($data); $i++) {
          if ($data[$i]['row_id'] != $prev) { // Unique row ID's and payee IDs inside here
@@ -47,12 +48,14 @@ $prev = '';
                      $month_count++;
                   } else {
                      $month_count = 1;
-                     $sql_string .= 'WHERE `payee_id` = ' . $data[$i]['payee_id'] . '; ';
+                     $sql_string .= 'WHERE `payee_id` = ' . $data[$i]['payee_id'] . ' AND board_id = ' . $data[$i]['board_id'] . '; ';
                   }
                }
             }
+
+
             if (mysqli_query($conn, $sql_string)) {
-               echo "Update row " . $row_count . '.  ';
+               echo "Updated row " . $row_count . '.  ';
             } else {
                echo "Error: " . $sql_string . ":-" . mysqli_error($conn);
             }
