@@ -38,7 +38,26 @@
         </div>
         <div class="checkboxes">
 
-             <?php
+            <div class="rowx">
+                <div class="descx"></div>
+                <div class="checks-containerx">
+                    <div class="checkx"><button class="checkxb" id="january-checkall">&#9660;</button></div>
+                    <div class="checkx"><button class="checkxb" id="february-checkall">&#9660;</button></div>
+                    <div class="checkx"><button class="checkxb" id="march-checkall">&#9660;</button></div>
+                    <div class="checkx"><button class="checkxb" id="april-checkall">&#9660;</button></div>
+                    <div class="checkx"><button class="checkxb" id="may-checkall">&#9660;</button></div>
+                    <div class="checkx"><button class="checkxb" id="june-checkall">&#9660;</button></div>
+                    <div class="checkx"><button class="checkxb" id="july-checkall">&#9660;</button></div>
+                    <div class="checkx"><button class="checkxb" id="august-checkall">&#9660;</button></div>
+                    <div class="checkx"><button class="checkxb" id="september-checkall">&#9660;</button></div>
+                    <div class="checkx"><button class="checkxb" id="october-checkall">&#9660;</button></div>
+                    <div class="checkx"><button class="checkxb" id="november-checkall">&#9660;</button></div>
+                    <div class="checkx"><button class="checkxb" id="december-checkall">&#9660;</button></div>
+                </div>
+            </div>
+
+
+            <?php
                 $board = $_GET["board"];
                 $user = $_GET["user"];
                 try {
@@ -68,7 +87,6 @@
                     . "WHERE board_row.board_id = $board AND payer.user_name = '$user';"
                     );
                     
-                    echo 'user from string: ' . $user . '<br>';
 
                     $starting_index = 5;
                     while ($row = mysqli_fetch_array($result)) {
@@ -80,26 +98,26 @@
                         $payer_id               = $row['user_name'];
                         $board_row_id           = $row['board_row_id'];
                         $checkbox_group_html    = '';
-                        echo 'user from db: ' . $payer_id;
 
                         echo '<div class="row" row-id="' . $board_row_id . '" board_id="' . $board_row_board_id . '">';
                         echo '<div class="desc"><input class="payee" type="text" value="' . $payee_name . '" row-id="' . $board_row_id . '" payee-id="' . $payee_id . '"></div>';
                         echo '<div class="checks-container">';
 
 
-                            foreach ($row as $key => $value) {
-                                if (is_int($key) && $key > $starting_index) {
-                                    $month_index = $key - $starting_index;
-                                    $month_name = strtolower(date('F', mktime(0, 0, 0, $month_index, 10)));
-                                    $checkbox_group_html .=  '<div class="check"><input class="checkbox" type="checkbox" id="' . $board_row_id . '-' . $month_name . '"';
-                                    if($row[$key] == 1) {
-                                        $checkbox_group_html .= 'checked';
-                                    } else {
-                                        $checkbox_group_html .= '';
-                                    }
-                                    $checkbox_group_html .= ' row-id="' . $board_row_id . '" checkbox-id="' . $month_name . '" checked-id="' . $row[$key] . '"></div>';
+                        
+                        foreach ($row as $key => $value) {
+                            if (is_int($key) && $key > $starting_index) {
+                                $month_index = $key - $starting_index;
+                                $month_name = strtolower(date('F', mktime(0, 0, 0, $month_index, 10)));
+                                $checkbox_group_html .=  '<div class="check"><input class="checkbox" type="checkbox" id="' . $board_row_id . '-' . $month_name . '"';
+                                if($row[$key] == 1) {
+                                    $checkbox_group_html .= 'checked';
+                                } else {
+                                    $checkbox_group_html .= '';
                                 }
+                                $checkbox_group_html .= ' row-id="' . $board_row_id . '" checkbox-id="' . $month_name . '" checked-id="' . $row[$key] . '"></div>';
                             }
+                        }
                         echo $checkbox_group_html . '</div></div>';
                     }
                 }
@@ -109,6 +127,8 @@
                 }
             ?>
 
+
+                
         </div>
         <div><button id="check-all">Check All</button></div>
 

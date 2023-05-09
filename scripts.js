@@ -1,10 +1,11 @@
-var months = document.querySelectorAll('.month');
-var checkOffContainer = document.querySelector('.checkoff-container');
-var checkAll = document.getElementById('check-all');
-var allChecks = document.querySelectorAll('.check input');
-var autosave = document.getElementById('autosave');
+var months              = document.querySelectorAll('.month');
+var checkOffContainer   = document.querySelector('.checkoff-container');
+var checkAll            = document.getElementById('check-all');
+var allChecks           = document.querySelectorAll('.check input');
+var autosave            = document.getElementById('autosave');
+var checkAllCols        = document.getElementsByClassName('checkxb');
+var rowCount            = document.getElementsByClassName('row').length;
 var x;
-
 
 // Get query string
 const queryParams = new URLSearchParams(window.location.search);
@@ -13,10 +14,14 @@ var board = queryParams.get('board');
 
 
 
-checkSize();
+checkWindowSize();
+
+if (rowCount < 2) {
+    document.getElementsByClassName('rowx')[0].remove();
+}
 
 window.addEventListener('resize', function() {
-    checkSize();
+    checkWindowSize();
 })
 
 checkAll.addEventListener('click', function() {
@@ -35,9 +40,22 @@ checkAll.addEventListener('click', function() {
 
 checkOffContainer.addEventListener('input', function() {
     countdown();
-    // console.log(event.target.getAttribute('board_row_info'));
     toggleCheckAllButton();
 })
+
+for (n=0; n < checkAllCols.length; n++) {
+    checkAllCols[n].addEventListener('click', function() {
+        countdown();
+        toggleMonthCol(this.id);
+    })
+}
+
+
+
+
+
+
+
 
 
 
@@ -92,8 +110,21 @@ function countdown() {
     }, 1000);
 }
 
+function toggleMonthCol(monthID) {
+    var monthCol = document.querySelectorAll("[checkbox-id=" + monthID.split('-')[0] + "]");
+    if (!peekAtMonthBoxes(monthCol)) {
+        monthCol.forEach( e => {
+            e.checked = true;
+        })
+    } else {
+        monthCol.forEach( e => {
+            e.checked = false;
+        })
+    }
+}
+
 function toggleCheckAllButton() {
-    if (peekAtCheckBoxes()) {
+    if (peekAtAllBoxes()) {
         checkAll.innerText = 'Uncheck All';
         return true;
     } else {
@@ -102,9 +133,9 @@ function toggleCheckAllButton() {
     }
 }
 
-function peekAtCheckBoxes() {
+function peekAtMonthBoxes(month) {
     var allAreChecked = true;
-    allChecks.forEach( function(val, i) {
+    month.forEach( function(val) {
         if (val.checked && allAreChecked == true) {
         } else {
             allAreChecked = false;
@@ -113,15 +144,26 @@ function peekAtCheckBoxes() {
     return allAreChecked;
 }
 
-function checkSize() {
+function peekAtAllBoxes() {
+    var allAreChecked = true;
+    allChecks.forEach( function(val) {
+        if (val.checked && allAreChecked == true) {
+        } else {
+            allAreChecked = false;
+        }
+    })
+    return allAreChecked;
+}
+
+function checkWindowSize() {
     if (this.window.innerWidth < 1050) {
-        showMonth('single');
+        showOrShortenMonth('single');
             } else {
-        showMonth('full');
+        showOrShortenMonth('full');
     }
 }
 
-function showMonth(whichOne) {
+function showOrShortenMonth(whichOne) {
     if (whichOne == 'single') {
         months.forEach(e => {
             e.innerText = e.getAttribute('month').charAt(0);

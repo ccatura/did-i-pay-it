@@ -22,12 +22,14 @@ body {
     flex-flow: column nowrap;
 }
 
-.row {
+.row,
+.rowx {
     display: flex;
 }
 
 .desc-heading,
-.desc {
+.desc,
+.descx {
     width: 200px;
     /* border: 1px solid red; */
     display: flex;
@@ -35,7 +37,8 @@ body {
     align-items: center;
 }
 
-.desc input {
+.desc input,
+.descx input {
     font-size: 16px;
     width: 150px;
     border: none;
@@ -49,7 +52,8 @@ body {
 }
 
 .month,
-.check {
+.check,
+.checkx {
     /* border: 2px solid green; */
     text-align: center;
     font-size: 14px;
@@ -60,14 +64,37 @@ body {
     overflow: hidden;
 }
 
+.checkxb {
+    font-weight: bold;
+    color: #ffffff;
+    background-color: rgb(0, 184, 24);
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkxb:hover {
+    background-color: rgb(0, 218, 29);
+}
+
+.checkxb:active {
+    color: rgb(0, 184, 24);
+    background-color: black;
+}
+
 .month {
 }
 
-.check input {
+.check input,
+.checkx input {
     transform: scale(2);
 }
 
-.checks-container {
+.checks-container,
+.checks-containerx {
     width: 100%;
     height: 30px;
     display: flex;
@@ -84,19 +111,26 @@ body {
 
 
 @media screen and (max-width: 550px) {
-    .check input {
+    .check input,
+    .checkx input {
         transform: scale(1.5);
+    }
+
+    .checkxb {
+        transform: scale(.7);
     }
 }
 
 @media screen and (max-width: 450px) {
-    .check input {
+    .check input,
+    .checkx input {
         transform: scale(1.2);
     }
 }
 
 @media screen and (max-width: 380px) {
-    .check input {
+    .check input,
+    .checkx input {
         transform: scale(1);
     }
 }
