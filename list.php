@@ -13,7 +13,7 @@ $result = mysqli_query($conn,"SELECT payer.user_name as 'user', board.name as 'b
 $html = 'Logged in as:<br>' . $_POST['user'] . '<br><br>Boards:<br>';
 
 while ($row = mysqli_fetch_assoc($result)) {
-    $html .= '<a href="/index.php?board=' . $row['board_id'] . '&user=' . $_POST['user'] . '">' . $row['board_name'] . '<br>';
+    $html .= '<a href="./index.php?board=' . $row['board_id'] . '&user=' . $_POST['user'] . '">' . $row['board_name'] . '<br>';
 }
 
 
