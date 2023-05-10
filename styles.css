@@ -140,7 +140,11 @@ body {
 
 
 
-
+@media screen and (max-width: 750px) {
+    .main-container {
+        min-width: 750px;
+    }
+}
 
 
 @media screen and (max-width: 550px) {
@@ -162,10 +166,6 @@ body {
 }
 
 @media screen and (max-width: 380px) {
-    body {
-        min-width: 700px;
-    }
-
     /* .check input,
     .checkx input {
         transform: scale(1);
