@@ -15,6 +15,7 @@ var board = queryParams.get('board');
 
 
 checkWindowSize();
+turnArrowGreen();
 
 if (rowCount < 2) {
     document.getElementsByClassName('rowx')[0].remove();
@@ -36,17 +37,20 @@ checkAll.addEventListener('click', function() {
         })
     }
     toggleCheckAllButton();
+    turnArrowGreen();
 })
 
 checkOffContainer.addEventListener('input', function() {
     countdown();
     toggleCheckAllButton();
+    turnArrowGreen();
 })
 
 for (n=0; n < checkAllCols.length; n++) {
     checkAllCols[n].addEventListener('click', function() {
         countdown();
-        toggleMonthCol(this.id);
+        toggleMonthCol(this.id.split('-')[0]);
+        turnArrowGreen();
     })
 }
 
@@ -61,15 +65,95 @@ for (n=0; n < checkAllCols.length; n++) {
 
 
 
+/* Call this to check all arrows. Turns completed months to green. */
+function turnArrowGreen() {
+    for (y=0; y < checkAllCols.length; y++) {
+        if (peekAtMonthBoxes(getMonthCol(checkAllCols[y].id))) {
+            checkAllCols[y].classList.add('complete');
+        } else {
+            checkAllCols[y].classList.remove('complete');
+        }
+    }
+}
 
+/* Pass any month name to get that column's accumulative state. If all are checked, returns true, otherwise false. */
+function getMonthCol(monthID) {
+    return document.querySelectorAll("[checkbox-id=" + monthID.split('-')[0] + "]");
+}
 
+/* Pass any month name to toggle the 'check all' arrow to green if all month's checkboxes are cheked, otherwise tuens arrow to neutral */
+function toggleMonthCol(monthID) {
+    monthCol = getMonthCol (monthID);
+    if (!peekAtMonthBoxes(monthCol)) {
+        monthCol.forEach( e => {
+            e.checked = true;
+        })
+    } else {
+        monthCol.forEach( e => {
+            e.checked = false;
+        })
+    }
+}
 
+/* If all checkboxes are cheked, turns them off. Otherwise turns the remaining boxes on. */
+function toggleCheckAllButton() {
+    if (peekAtAllBoxes()) {
+        checkAll.innerText = 'Uncheck All';
+        return true;
+    } else {
+        checkAll.innerText = 'Check All';
+        return false;
+    }
+}
 
+/* Pass an array of elements (checkboxes). If they are all checked, returns true, otherwise returns false. */
+function peekAtMonthBoxes(month) {
+    var allAreChecked = true;
+    month.forEach( function(val) {
+        if (val.checked && allAreChecked == true) {
+        } else {
+            allAreChecked = false;
+        }
+    })
+    return allAreChecked;
+}
 
+/* Returns true if all boxes are checked, otherwise returns false. */
+function peekAtAllBoxes() {
+    var allAreChecked = true;
+    allChecks.forEach( function(val) {
+        if (val.checked && allAreChecked == true) {
+        } else {
+            allAreChecked = false;
+        }
+    })
+    return allAreChecked;
+}
 
+/* If window is too small, labels months with only first letter. Otherwise shows entire month name */
+function checkWindowSize() {
+    if (this.window.innerWidth < 1050) {
+        showOrShortenMonth('single');
+            } else {
+        showOrShortenMonth('full');
+    }
 
+    function showOrShortenMonth(whichOne) {
+        if (whichOne == 'single') {
+            months.forEach(e => {
+                e.innerText = e.getAttribute('month').charAt(0);
+            })
+        } else if (whichOne == 'full') {
+            months.forEach(e => {
+                e.innerText = e.getAttribute('month');
+            })
+        }
+    }
+}
+
+/* Resets and starts the countdown for autosave */
 function countdown() {
-    var autosaveInterval = 6; //default should be 6
+    var autosaveInterval = 6; // Seconds +1
     clearInterval(x);
     x = setInterval(function() {
         if(autosaveInterval > 1) {
@@ -96,9 +180,7 @@ function countdown() {
                 }
             }
 
-            // console.log(data);
-
-            // AJAX CALL
+            // AJAX CALL - Sends data to be autosaved
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "./database-commit.php");
             xhr.onload = function () {
@@ -108,69 +190,4 @@ function countdown() {
             clearInterval(x);
         }
     }, 1000);
-}
-
-function toggleMonthCol(monthID) {
-    var monthCol = document.querySelectorAll("[checkbox-id=" + monthID.split('-')[0] + "]");
-    if (!peekAtMonthBoxes(monthCol)) {
-        monthCol.forEach( e => {
-            e.checked = true;
-        })
-    } else {
-        monthCol.forEach( e => {
-            e.checked = false;
-        })
-    }
-}
-
-function toggleCheckAllButton() {
-    if (peekAtAllBoxes()) {
-        checkAll.innerText = 'Uncheck All';
-        return true;
-    } else {
-        checkAll.innerText = 'Check All';
-        return false;
-    }
-}
-
-function peekAtMonthBoxes(month) {
-    var allAreChecked = true;
-    month.forEach( function(val) {
-        if (val.checked && allAreChecked == true) {
-        } else {
-            allAreChecked = false;
-        }
-    })
-    return allAreChecked;
-}
-
-function peekAtAllBoxes() {
-    var allAreChecked = true;
-    allChecks.forEach( function(val) {
-        if (val.checked && allAreChecked == true) {
-        } else {
-            allAreChecked = false;
-        }
-    })
-    return allAreChecked;
-}
-
-function checkWindowSize() {
-    if (this.window.innerWidth < 1050) {
-        showOrShortenMonth('single');
-            } else {
-        showOrShortenMonth('full');
-    }
-}
-
-function showOrShortenMonth(whichOne) {
-    if (whichOne == 'single') {
-        months.forEach(e => {
-            e.innerText = e.getAttribute('month').charAt(0);
-        })
-    } else if (whichOne == 'full') {
-        months.forEach(e => {
-            e.innerText = e.getAttribute('month');
-        })
-    }
 }

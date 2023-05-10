@@ -51,6 +51,11 @@ body {
     width: 100%;
 }
 
+.complete {
+    color: #ffffff;
+    background-color: rgb(0, 184, 24);
+}
+
 .month,
 .check,
 .checkx {
@@ -66,8 +71,6 @@ body {
 
 .checkxb {
     font-weight: bold;
-    color: #ffffff;
-    background-color: rgb(0, 184, 24);
     border-radius: 50%;
     width: 25px;
     height: 25px;
@@ -77,11 +80,12 @@ body {
 }
 
 .checkxb:hover {
-    background-color: rgb(0, 218, 29);
+    color: white;
+    background-color: rgb(149, 120, 255);
 }
 
 .checkxb:active {
-    color: rgb(0, 184, 24);
+    color: white;
     background-color: black;
 }
 
