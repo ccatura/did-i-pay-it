@@ -158,9 +158,9 @@ function countdown() {
     x = setInterval(function() {
         if(autosaveInterval > 1) {
             autosaveInterval -= 1;
-            autosave.innerText = " in... " + autosaveInterval;
+            autosave.innerHTML = "&nbsp;in... " + autosaveInterval;
         } else {
-            autosave.innerText = "d!";
+            autosave.innerHTML = "d!";
             var data = [];
 
             // Gather all info to send to DB

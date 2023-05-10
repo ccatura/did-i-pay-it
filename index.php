@@ -15,7 +15,7 @@
 
 
     <div class="container">
-        <div id="header">Auto Save<span id="autosave"> Enabled</span></div>
+        <div id="header">Auto Save<span id="autosave">&nbsp;Enabled</span></div>
         <div class="checkoff-container">
             <div class="headings">
                 <div class="desc-heading" id="desc-heading"></div>
