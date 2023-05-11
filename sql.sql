@@ -10,6 +10,7 @@ DROP TABLE payer;
 CREATE TABLE payer (
     user_name   VARCHAR(32) UNIQUE NOT NULL,
     name        VARCHAR(255) NOT NULL,
+    pword       VARCHAR(255) NOT NULL,
     PRIMARY KEY (user_name)
 );
 
