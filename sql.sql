@@ -72,15 +72,6 @@ INSERT INTO `payee`(`name`) VALUES ('Phone Bill');
 
 
 -- Make some rows
-INSERT INTO `board_row`(`payer_id`, `payee_id`, `january`, `february`, `july`, `october`) VALUES ('ccatura', '1', true, true, true, true);
-INSERT INTO `board_row`(`payer_id`, `payee_id`, `january`, `march`, `september`, `october`) VALUES ('ccatura', '2', true, true, true, true);
-INSERT INTO `board_row`(`payer_id`, `payee_id`, `february`, `april`, `may`, `june`) VALUES ('eeatura', '4', true, true, true, true);
-INSERT INTO `board_row`(`payer_id`, `payee_id`, `february`, `april`, `may`, `june`) VALUES ('ggatura', '2', true, true, true, true);
-INSERT INTO `board_row`(`payer_id`, `payee_id`, `march`, `july`, `october`, `november`) VALUES ('rratura', '3', true, true, true, true);
-INSERT INTO `board_row`(`payer_id`, `payee_id`, `march`, `july`, `october`, `november`) VALUES ('ccatura', '3', true, true, true, false);
-INSERT INTO `board_row`(`payer_id`, `payee_id`, `january`, `february`, `march`, `april`, `may`, `june`, `july`, `august`, `september`, `october`, `november`, `december`) VALUES ('rratura', '2', true, true, true, true, false, false, true, false, true, true, false, true);
-INSERT INTO `board_row`(`payer_id`, `payee_id`, `january`, `february`, `march`, `april`, `may`, `june`, `july`, `august`, `september`, `october`, `november`, `december`) VALUES ('ggatura', '4', true, false, true, true, true, true, true, false, true, false, false, true);
-
 INSERT INTO `board_row`(`board_id`, `payer_id`, `payee_id`, `january`, `february`, `march`, `april`, `may`, `june`, `july`, `august`, `september`, `october`, `november`, `december`) VALUES ('1', 'ccatura', '1', true, true, true, true, false, false, true, false, true, true, false, true);
 INSERT INTO `board_row`(`board_id`, `payer_id`, `payee_id`, `january`, `february`, `march`, `april`, `may`, `june`, `july`, `august`, `september`, `october`, `november`, `december`) VALUES ('1', 'ccatura', '2', true, false, true, true, true, true, true, false, true, false, false, true);
 INSERT INTO `board_row`(`board_id`, `payer_id`, `payee_id`, `january`, `february`, `march`, `april`, `may`, `june`, `july`, `august`, `september`, `october`, `november`, `december`) VALUES ('1', 'ccatura', '3', true, false, true, true, true, true, true, false, true, false, false, true);

@@ -1,6 +1,17 @@
 <?php
     include_once("./db.php");
+
+    session_start();
+    $user = $_SESSION["userx"];
+    // $post_data = file_get_contents('php://input');
+    // $user = $_POST['user'];
+
+    // $user = $_GET["user"];
+
+    // echo "Favorite color is " . $_SESSION["favcolor"] . ".<br>";
+    // echo "Favorite animal is " . $_SESSION["favanimal"] . ".";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +26,7 @@
 
 
     <div class="container main-container">
-        <div id="header">Auto Save<span id="autosave">&nbsp;Enabled</span></div>
+        <div id="header"><?php echo $user; ?>: Auto Save<span id="autosave">&nbsp;Enabled</span></div>
         <div class="checkoff-container">
             <div class="headings">
                 <div class="desc-heading" id="desc-heading"></div>
@@ -57,7 +68,7 @@
 
                 <?php
                     $board = $_GET["board"];
-                    $user = $_GET["user"];
+                    // $user = $_GET["user"];
                     try {
                         $result = mysqli_query($conn,
                         "SELECT    board_row.id as 'board_row_id',\n"
@@ -65,6 +76,7 @@
                         . "		   payee.name as 'payee_name',\n"
                         . "		   board.name as 'board_name',\n"
                         . "		   board_row.board_id as 'board_row_board_id',\n"
+                        . "		   board_row.order,\n"
                         . "		   payer.user_name,\n"
                         . "        board_row.january,\n"
                         . "        board_row.february,\n"
@@ -82,11 +94,12 @@
                         . "INNER JOIN board ON board.payer_id = payer.user_name\n"
                         . "INNER JOIN board_row on board_row.board_id = board.id\n"
                         . "INNER JOIN payee on payee.id = board_row.payee_id\n"
-                        . "WHERE board_row.board_id = $board AND payer.user_name = '$user';"
+                        . "WHERE board_row.board_id = $board AND payer.user_name = '$user'\n"
+                        . "ORDER BY `order`;"
                         );
                         
 
-                        $starting_index = 5;
+                        $starting_index = 6;
                         while ($row = mysqli_fetch_array($result)) {
 
                             
@@ -95,10 +108,11 @@
                             $payee_id               = $row['payee_id'];
                             $payer_id               = $row['user_name'];
                             $board_row_id           = $row['board_row_id'];
+                            $order                  = $row['order'];
                             $board_name             = $row['board_name'];
                             $checkbox_group_html    = '';
 
-                            echo '<div class="row" row-id="' . $board_row_id . '" board_id="' . $board_row_board_id . '">';
+                            echo '<div class="row" row-id="' . $board_row_id . '" board_id="' . $board_row_board_id . '" order="' . $order . '">';
                             echo '<div class="desc"><input class="payee" type="text" value="' . $payee_name . '" row-id="' . $board_row_id . '" payee-id="' . $payee_id . '"></div>';
                             echo '<div class="checks-container">';
 

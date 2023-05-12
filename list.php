@@ -3,7 +3,12 @@ include_once './db.php';
 
 // $post_data = file_get_contents('php://input');
 // $user = $_POST['user'];
-$user = $_GET["user"];
+
+// $user = $_GET["user"];
+
+session_start();
+$user = $_SESSION["userx"];
+
 
 $result = mysqli_query($conn,"SELECT payer.user_name as 'user', board.name as 'board_name', board.id as 'board_id' FROM `board` JOIN `payer` ON board.payer_id = payer.user_name WHERE board.payer_id = '$user';");
 
@@ -26,7 +31,7 @@ $html = '<div class="container">';
 $html .= 'Logged in as: <Strong>' . $user . '</strong><br><br>Boards:<br>';
 
 while ($row = mysqli_fetch_assoc($result)) {
-    $html .= '<a href="./board.php?board=' . $row['board_id'] . '&user=' . $user . '">' . $row['board_name'] . '<br>';
+    $html .= '<a href="./board.php?board=' . $row['board_id'] . '">' . $row['board_name'] . '<br>';
 }
 
 $html .=   '</div>
