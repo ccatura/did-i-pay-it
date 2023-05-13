@@ -7,7 +7,13 @@ include_once './db.php';
 // $user = $_GET["user"];
 
 session_start();
-$user = $_SESSION["userx"];
+
+if (isset($_SESSION["userx"])) {
+    $user = $_SESSION["userx"];
+} else {
+    $user = 'No user';
+    header('Location: ./');
+}
 
 
 $result = mysqli_query($conn,"SELECT payer.user_name as 'user', board.name as 'board_name', board.id as 'board_id' FROM `board` JOIN `payer` ON board.payer_id = payer.user_name WHERE board.payer_id = '$user';");
@@ -21,7 +27,7 @@ $result = mysqli_query($conn,"SELECT payer.user_name as 'user', board.name as 'b
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
-    <title>Document</title>
+    <title>Did I Pay It | Board list</title>
 </head>
 <body>
         

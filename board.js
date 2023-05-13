@@ -3,6 +3,7 @@ var checkOffContainer   = document.querySelector('.checkoff-container');
 var checkAll            = document.getElementById('check-all');
 var allChecks           = document.querySelectorAll('.check input');
 var autosave            = document.getElementById('autosave');
+var headerInner         = document.getElementById('header-inner');
 var checkAllCols        = document.getElementsByClassName('checkxb');
 var rowCount            = document.getElementsByClassName('row').length;
 var x;
@@ -53,9 +54,6 @@ for (n=0; n < checkAllCols.length; n++) {
         turnArrowGreen();
     })
 }
-
-
-
 
 
 
@@ -153,6 +151,7 @@ function checkWindowSize() {
 
 /* Resets and starts the countdown for autosave */
 function countdown() {
+    header.style.opacity = 1;
     var autosaveInterval = 6; // Seconds +1
     clearInterval(x);
     x = setInterval(function() {
@@ -188,6 +187,15 @@ function countdown() {
             };
             xhr.send(JSON.stringify(data));
             clearInterval(x);
+            var fadeIn = setTimeout(() => {
+                header.style.opacity = 0;
+                var resetHeader = setTimeout(() => {
+                    // clearTimeout(fadeIn);
+                    headerInner.innerText = 'AutoSave';
+                    autosave.innerHTML = '&nbsp;Enabled';
+                    // clearTimeout(resetHeader);
+                }, 1000);
+            }, 2000);
         }
     }, 1000);
 }

@@ -2,14 +2,20 @@
     include_once("./db.php");
 
     session_start();
-    $user = $_SESSION["userx"];
+
+
+    if (isset($_SESSION["userx"])) {
+        $user = $_SESSION["userx"];
+    } else {
+        $user = 'No user';
+        header('Location: ./');
+    }
+
+    // Old code from form data. now using sessions.
     // $post_data = file_get_contents('php://input');
     // $user = $_POST['user'];
-
     // $user = $_GET["user"];
 
-    // echo "Favorite color is " . $_SESSION["favcolor"] . ".<br>";
-    // echo "Favorite animal is " . $_SESSION["favanimal"] . ".";
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +32,7 @@
 
 
     <div class="container main-container">
-        <div id="header"><?php echo $user; ?>: Auto Save<span id="autosave">&nbsp;Enabled</span></div>
+        <div id="header"><span id="header-inner">AutoSave</span><span id="autosave">&nbsp;Enabled</span></div>
         <div class="checkoff-container">
             <div class="headings">
                 <div class="desc-heading" id="desc-heading"></div>
@@ -97,12 +103,14 @@
                         . "WHERE board_row.board_id = $board AND payer.user_name = '$user'\n"
                         . "ORDER BY `order`;"
                         );
-                        
+
+                        if ($result->num_rows == 0) {
+                            header('Location: ./list.php');
+                        }
 
                         $starting_index = 6;
                         while ($row = mysqli_fetch_array($result)) {
-
-                            
+                           
                             $board_row_board_id     = $row['board_row_board_id'];
                             $payee_name             = $row['payee_name'];
                             $payee_id               = $row['payee_id'];
@@ -145,6 +153,8 @@
                     
             </div>
             <div><button id="check-all">Check All</button></div>
+            <div><a href="./logout.php">Logout</a></div>
+            <div><a href="./list.php">View Your Boards</a></div>
 
 
         </div>
