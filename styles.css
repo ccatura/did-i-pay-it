@@ -17,6 +17,7 @@ body {
     border-radius: 20px;
     background-color: white;
     box-shadow: 0 0 20px gray;
+    overflow-x: auto;
 }
 
 .form {
@@ -53,6 +54,7 @@ body {
 .checkoff-container {
     /* border: 2px solid red; */
     margin: 1em;
+    min-width: 750px;
 }
 
 .headings {
@@ -71,6 +73,12 @@ body {
     margin-bottom: 5px;
 }
 
+.desc {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+
 .desc-heading,
 .desc,
 .descx {
@@ -87,6 +95,12 @@ body {
     font-size: 16px;
     width: 150px;
     border: none;
+}
+
+.payee {
+    background-color: rgba(255, 255, 255, 0);
+    font-weight: bold;
+    text-shadow: 0 0 2px white, 0 0 3px white, 0 0 4px white, 0 0 5px white, 0 0 6px white, 0 0 10px white, 0 0 10px white;
 }
 
 #months-container {
@@ -171,7 +185,7 @@ body {
 
 @media screen and (max-width: 750px) {
     .main-container {
-        min-width: 750px;
+        /* min-width: 750px; */
     }
 }
 
