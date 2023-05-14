@@ -3,11 +3,17 @@
 
     session_start();
 
+    // header('Location: ./');
+
+    if (isset($_GET["board"])) {
+        $board = $_GET["board"];
+    } else {
+        header('Location: ./list.php');
+    }
 
     if (isset($_SESSION["userx"])) {
         $user = $_SESSION["userx"];
     } else {
-        $user = 'No user';
         header('Location: ./');
     }
 
@@ -73,7 +79,6 @@
 
 
                 <?php
-                    $board = $_GET["board"];
                     // $user = $_GET["user"];
                     try {
                         $result = mysqli_query($conn,

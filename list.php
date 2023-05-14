@@ -1,17 +1,13 @@
 <?php
 include_once './db.php';
 
-// $post_data = file_get_contents('php://input');
-// $user = $_POST['user'];
-
-// $user = $_GET["user"];
 
 session_start();
+include_once './header.php';
 
 if (isset($_SESSION["userx"])) {
     $user = $_SESSION["userx"];
 } else {
-    $user = 'No user';
     header('Location: ./');
 }
 
@@ -34,7 +30,8 @@ $result = mysqli_query($conn,"SELECT payer.user_name as 'user', board.name as 'b
 <?php
 
 $html = '<div class="container">';
-$html .= 'Logged in as: <Strong>' . $user . '</strong><br><br>Boards:<br>';
+$html .= $header . '<br>';
+$html .= '<strong>Boards:</strong><br>';
 
 while ($row = mysqli_fetch_assoc($result)) {
     $html .= '<a href="./board.php?board=' . $row['board_id'] . '">' . $row['board_name'] . '<br>';

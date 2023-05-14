@@ -36,13 +36,14 @@
                 $pword = $row['pword'];
                 $user = $row['user_name'];
                 $name = $row['name'];
+                $_SESSION['user'] = $row['user_name'];
+                $_SESSION['name'] = $row['name'];
             }
             echo $user . '<br>';
             echo $pword . '<br>';
             echo $name . '<br><br>';
 
             if ($pwordx == $pword) {
-                echo 'Passwords match - ' . $pwordx . ' EQUALS ' . $pword;
                 header('Location: ./list.php');
                 exit;
             } else {
