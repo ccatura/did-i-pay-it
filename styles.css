@@ -75,7 +75,7 @@ body {
 
 .desc {
     position: sticky;
-    left: 0;
+    left: 15px;
     z-index: 2;
 }
 
@@ -164,13 +164,21 @@ body {
     justify-content: space-between;
 }
 
+
 .desc input:focus {
     background-color: yellow;
 }
 
+.delete-row {
+    opacity: 0;
+    font-weight: bold;
+    transform: translateY(-2px) translateX(-5px);
+    cursor: pointer;
+}
 
-
-
+.row:hover .delete-row {
+    opacity: 1;
+}
 
 
 

@@ -7,8 +7,9 @@
 
     if (isset($_GET["board"])) {
         $board = $_GET["board"];
+        $_SESSION['board'] = $board;
     } else {
-        header('Location: ./list.php');
+        header('Location: ./list-boards.php');
     }
 
     if (isset($_SESSION["userx"])) {
@@ -109,9 +110,9 @@
                         . "ORDER BY `order`;"
                         );
 
-                        if ($result->num_rows == 0) {
-                            header('Location: ./list.php');
-                        }
+                        // if ($result->num_rows == 0) {
+                        //     header('Location: ./list.php');
+                        // }
 
                         $starting_index = 6;
                         while ($row = mysqli_fetch_array($result)) {
@@ -126,7 +127,7 @@
                             $checkbox_group_html    = '';
 
                             echo '<div class="row" row-id="' . $board_row_id . '" board_id="' . $board_row_board_id . '" order="' . $order . '">';
-                            echo '<div class="desc"><input class="payee" type="text" value="' . $payee_name . '" row-id="' . $board_row_id . '" payee-id="' . $payee_id . '"></div>';
+                            echo '<div class="desc"><a href="./delete-board-row.php?row_id=' . $board_row_id . '&board=' . $board_row_board_id . '"><span class="delete-row" row-id="' . $board_row_id . '">&#10005;</span></a><input class="payee" type="text" value="' . $payee_name . '" row-id="' . $board_row_id . '" payee-id="' . $payee_id . '"></div>';
                             echo '<div class="checks-container">';
 
 
@@ -158,8 +159,9 @@
                     
             </div>
             <div><button id="check-all">Check All</button></div>
+            <div><a href="./add-board-row.php">Add Row</a></div>
             <div><a href="./logout.php">Logout</a></div>
-            <div><a href="./list.php">View Your Boards</a></div>
+            <div><a href="./list-boards.php">View Your Boards</a></div>
 
 
         </div>

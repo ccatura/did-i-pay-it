@@ -30,11 +30,11 @@ echo $header . '<br>';
 if($result->num_rows > 0) {
     echo '<strong>Boards:</strong><br>';
     while ($row = mysqli_fetch_assoc($result)) {
-        echo '<a href="./board.php?board=' . $row['board_id'] . '">' . $row['board_name'] . '</a><br>';
+        echo '<li><a href="./board.php?board=' . $row['board_id'] . '">' . $row['board_name'] . '</a><br>';
     }
-    echo '<br><a href="./board-create.php">Create New board</a>';
+    echo '<br><a href="./create-board.php">Create New board</a>';
 } else {
-    echo '<a href="./board-create.php">Create your first board</a>';
+    echo '<a href="./create-board.php">Create your first board</a>';
 }
 ?>
 

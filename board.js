@@ -5,6 +5,7 @@ var allChecks           = document.querySelectorAll('.check input');
 var autosave            = document.getElementById('autosave');
 var headerInner         = document.getElementById('header-inner');
 var checkAllCols        = document.getElementsByClassName('checkxb');
+var deleteRow           = document.getElementsByClassName('delete-row');
 var rowCount            = document.getElementsByClassName('row').length;
 var x;
 
@@ -52,6 +53,12 @@ for (n=0; n < checkAllCols.length; n++) {
         countdown();
         toggleMonthCol(this.id.split('-')[0]);
         turnArrowGreen();
+    })
+}
+
+for (m=0; m < deleteRow.length; m++) {
+    deleteRow[m].addEventListener('click', function(e) {
+        console.log(e.target.getAttribute('row-id'));
     })
 }
 

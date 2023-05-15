@@ -13,13 +13,7 @@ $_SESSION['fname'] = $_POST['fname'];
 $_SESSION['lname'] = $_POST['lname'];
 $_SESSION['user-created'] = false;
 
-
-
-
-
-
 $result = mysqli_query($conn,"SELECT `user_name` FROM `payer` WHERE user_name = '$user_new';");
-
 
 if ($result->num_rows > 0) {
    while ($row = mysqli_fetch_assoc($result)) {
@@ -41,7 +35,7 @@ if ($result->num_rows > 0) {
          echo 'user: ' . $_SESSION['user'] .'<br>';
          echo 'user created: ' . $_SESSION['user-created'] .'<br>';
          
-         header('Location: ./list.php');
+         header('Location: ./list-boards.php');
       } else {
          echo "Error: " . $sql_string . ":-" . mysqli_error($conn);
       }

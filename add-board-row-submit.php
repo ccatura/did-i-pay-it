@@ -4,26 +4,19 @@ include_once './db.php';
 session_start();
 
 $post_data = file_get_contents('php://input');
-$board_name = $_POST['board-name'];
+$payee_name = $_POST['payee-name'];
 $user = $_SESSION['user'];
-
-// $_SESSION['user'] = $_POST['user'];
-// $_SESSION['fname'] = $_POST['fname'];
-// $_SESSION['lname'] = $_POST['lname'];
-// $_SESSION['user-created'] = false;
+$board_id = $_SESSION['board'];
 
 
 
+$sql_string = "INSERT INTO `board_row` (`payee_id`, `board_id`, `payer_id`) VALUES ('$payee_name', '$board_id','$user');";
 
-
-
-
-
-$sql_string = "INSERT INTO `board` (`name`, `payer_id`) VALUES ('$board_name', '$user');";
+// echo $sql_string;
 
 try {
    if (mysqli_query($conn, $sql_string)) {
-      header('Location: ./list.php');
+      header('Location: ./board.php?board=' . $board_id);
    } else {
       echo "Error: " . $sql_string . ":-" . mysqli_error($conn);
    }

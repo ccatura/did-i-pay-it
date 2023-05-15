@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 $user = $_SESSION['user'] ? : '';
 $fname = $_SESSION['fname'] ? : '';
 $lname = $_SESSION['lname'] ? : '';
@@ -21,7 +20,7 @@ $lname = $_SESSION['lname'] ? : '';
 
 
 <div class="container">
-    <form action="./create-account-check.php" method="post" class="form">
+    <form action="./create-account-submit.php" method="post" class="form">
         <div><strong>Did I Pay It? | Create Account</strong></div>
         <div>Choose User Name<div><input type="text" name="user" value="<?php echo $user;?>" required onkeypress="return event.charCode != 32">
         <?php

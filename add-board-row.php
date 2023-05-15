@@ -14,20 +14,20 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
     <!-- <script src="./login.js" defer></script> -->
-   <title>Create Board | Did I Pay It?</title>
+   <title>Create Row | Did I Pay It?</title>
 </head>
 <body>
 
 
 <div class="container">
-    <form action="./board-create-submit.php" method="post" class="form">
-        <div><strong>Did I Pay It? | Create Account</strong></div>
-        <div>Board Name
+    <form action="./add-board-row-submit.php" method="post" class="form">
+        <div><strong>Did I Pay It? | Create Row</strong></div>
+        <div>Row Name
             <div>
-                <input type="text" name="board-name" required>
+                <input type="text" name="payee-name" required>
             </div>
         </div>
-        <div><input type="submit" name="submit" value="Create Board"></input></div>
+        <div><input type="submit" name="submit" value="Create Row"></input></div>
     </form>
 </div>
 

@@ -9,7 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
-    <script src="./login.js" defer></script>
    <title>Login | Did I Pay It?</title>
 </head>
 <body>
@@ -44,7 +43,7 @@
             echo $name . '<br><br>';
 
             if ($pwordx == $pword) {
-                header('Location: ./list.php');
+                header('Location: ./list-boards.php');
                 exit;
             } else {
                 echo 'Passwords do not match - ' . $pwordx . ' DOES NOT EQUAL ' . $pword . '<br><br>';
