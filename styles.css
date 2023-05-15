@@ -101,6 +101,7 @@ body {
     background-color: rgba(255, 255, 255, 0);
     font-weight: bold;
     text-shadow: 0 0 2px white, 0 0 3px white, 0 0 4px white, 0 0 5px white, 0 0 6px white, 0 0 10px white, 0 0 10px white;
+    transform: translateY(3px);
 }
 
 #months-container {
@@ -171,9 +172,16 @@ body {
 
 .delete-row {
     opacity: 0;
+}
+
+.delete-row,
+.delete-board {
     font-weight: bold;
-    transform: translateY(-2px) translateX(-5px);
     cursor: pointer;
+}
+
+a {
+    text-decoration: none;
 }
 
 .row:hover .delete-row {

@@ -159,7 +159,7 @@ function checkWindowSize() {
 /* Resets and starts the countdown for autosave */
 function countdown() {
     header.style.opacity = 1;
-    var autosaveInterval = 6; // Seconds +1
+    var autosaveInterval = 4; // Seconds +1
     clearInterval(x);
     x = setInterval(function() {
         if(autosaveInterval > 1) {
