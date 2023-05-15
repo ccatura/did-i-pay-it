@@ -1,7 +1,6 @@
 <?php
 include_once './db.php';
 
-
 session_start();
 include_once './header.php';
 
@@ -11,9 +10,7 @@ if (isset($_SESSION["userx"])) {
     header('Location: ./');
 }
 
-
 $result = mysqli_query($conn,"SELECT payer.user_name as 'user', board.name as 'board_name', board.id as 'board_id' FROM `board` JOIN `payer` ON board.payer_id = payer.user_name WHERE board.payer_id = '$user';");
-
 ?>
 
 <!DOCTYPE html>
@@ -28,20 +25,20 @@ $result = mysqli_query($conn,"SELECT payer.user_name as 'user', board.name as 'b
 <body>
         
 <?php
-
-$html = '<div class="container">';
-$html .= $header . '<br>';
-$html .= '<strong>Boards:</strong><br>';
-
-while ($row = mysqli_fetch_assoc($result)) {
-    $html .= '<a href="./board.php?board=' . $row['board_id'] . '">' . $row['board_name'] . '<br>';
+echo '<div class="container">';
+echo $header . '<br>';
+if($result->num_rows > 0) {
+    echo '<strong>Boards:</strong><br>';
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo '<a href="./board.php?board=' . $row['board_id'] . '">' . $row['board_name'] . '</a><br>';
+    }
+    echo '<br><a href="./board-create.php">Create New board</a>';
+} else {
+    echo '<a href="./board-create.php">Create your first board</a>';
 }
-
-$html .=   '</div>
-            </body>
-            </html>';
-
-echo $html;
-
 ?>
+
+    </div>
+</body>
+</html>
 

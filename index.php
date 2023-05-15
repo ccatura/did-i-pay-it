@@ -5,7 +5,8 @@
     $_SESSION['fname'] = '';
     $_SESSION['lname'] = '';
     $_SESSION['user-taken'] = false;
-?>
+    $_SESSION['user-created'] = false;
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">

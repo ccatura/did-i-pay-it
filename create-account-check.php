@@ -11,7 +11,7 @@ $name = $_POST['fname'] . ' ' . $_POST['lname'];
 $_SESSION['user'] = $_POST['user'];
 $_SESSION['fname'] = $_POST['fname'];
 $_SESSION['lname'] = $_POST['lname'];
-
+$_SESSION['user-created'] = false;
 
 
 
@@ -33,8 +33,15 @@ if ($result->num_rows > 0) {
 
    try {
       if (mysqli_query($conn, $sql_string)) {
-         echo "User name: " . $user_new . " added!";
+         echo "User name: " . $user_new . " added!<br>";
          $_SESSION['user-taken'] = false;
+         $_SESSION['userx'] = $user_new;
+         $_SESSION['user-created'] = true;
+         $_SESSION['name'] = $_SESSION['fname'] . ' ' . $_SESSION['lname'];
+         echo 'user: ' . $_SESSION['user'] .'<br>';
+         echo 'user created: ' . $_SESSION['user-created'] .'<br>';
+         
+         header('Location: ./list.php');
       } else {
          echo "Error: " . $sql_string . ":-" . mysqli_error($conn);
       }

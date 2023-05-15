@@ -34,7 +34,7 @@ $lname = $_SESSION['lname'] ? : '';
         <div>Last Name<div><input type="text" name="lname" value="<?php echo $fname;?>" required></div></div>
         <div>Password<div><input type="password" name="pword" required></div></div>
         <div>Confirm Password<div><input type="password" name="pword-confirm" required></div></div>
-        <div><input type="submit" name="submit" value="Creat Account"></input></div>
+        <div><input type="submit" name="submit" value="Create Account"></input></div>
         <div>or</div>
         <div><a href="./">Existing Users Login</a></div>
     </form>
