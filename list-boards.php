@@ -26,7 +26,7 @@ $result = mysqli_query($conn,"SELECT payer.user_name as 'user', board.name as 'b
         
 <?php
 echo '<div class="container">';
-echo $header . '<br>';
+echo $header;
 if($result->num_rows > 0) {
     echo '<strong>Boards:</strong><br>';
     while ($row = mysqli_fetch_assoc($result)) {

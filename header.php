@@ -9,7 +9,7 @@ if (isset($_SESSION['user-created'])) {
 }
 
 $header .=     '<strong>' . $_SESSION['name'] . '</strong> (' . $_SESSION['user'] . ')<br>'
-            . '<a href="./logout.php">Logout</a><br>';
+            . '<a href="./logout.php">Logout</a><br><br>';
 
 
 

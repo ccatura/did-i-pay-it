@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once './header.php';
 
 ?>
 
@@ -17,6 +18,7 @@ session_start();
 
 
 <div class="container">
+    <?php echo $header ?>
     <form action="./create-board-submit.php" method="post" class="form">
         <div><strong>Did I Pay It? | Create Account</strong></div>
         <div>Board Name

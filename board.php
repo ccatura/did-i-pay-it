@@ -1,9 +1,6 @@
 <?php
     include_once("./db.php");
-
     session_start();
-
-    // header('Location: ./');
 
     if (isset($_GET["board"])) {
         $board = $_GET["board"];
@@ -18,10 +15,7 @@
         header('Location: ./');
     }
 
-    // Old code from form data. now using sessions.
-    // $post_data = file_get_contents('php://input');
-    // $user = $_POST['user'];
-    // $user = $_GET["user"];
+    include_once './header.php';
 
 ?>
 
@@ -39,6 +33,7 @@
 
 
     <div class="container main-container">
+        <?php echo $header ?>
         <div id="header"><span id="header-inner">AutoSave</span><span id="autosave">&nbsp;Enabled</span></div>
         <div class="checkoff-container">
             <div class="headings">

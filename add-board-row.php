@@ -1,9 +1,6 @@
 <?php
 session_start();
-
-// $user = $_SESSION['user'] ? : '';
-// $fname = $_SESSION['fname'] ? : '';
-// $lname = $_SESSION['lname'] ? : '';
+include_once './header.php';
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +17,7 @@ session_start();
 
 
 <div class="container">
+    <?php echo $header ?>
     <form action="./add-board-row-submit.php" method="post" class="form">
         <div><strong>Did I Pay It? | Create Row</strong></div>
         <div>Row Name
