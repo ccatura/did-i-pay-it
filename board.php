@@ -1,6 +1,7 @@
 <?php
     include_once("./db.php");
     session_start();
+    $_SESSION['user-created'] = false;
 
     if (isset($_GET["board"])) {
         $board = $_GET["board"];
@@ -15,7 +16,7 @@
         header('Location: ./');
     }
 
-    include_once './header.php';
+    
 
 ?>
 
@@ -33,7 +34,7 @@
 
 
     <div class="container main-container">
-        <?php echo $header ?>
+        <?php include_once './header.php'; ?>
         <div id="header"><span id="header-inner">AutoSave</span><span id="autosave">&nbsp;Enabled</span></div>
         <div class="checkoff-container">
             <div class="headings">
@@ -155,8 +156,6 @@
             </div>
             <div><button id="check-all">Check All</button></div>
             <div><a href="./add-board-row.php">Add Row</a></div>
-            <div><a href="./logout.php">Logout</a></div>
-            <div><a href="./list-boards.php">View Your Boards</a></div>
 
 
         </div>

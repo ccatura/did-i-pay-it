@@ -2,7 +2,6 @@
 include_once './db.php';
 
 session_start();
-include_once './header.php';
 
 if (isset($_SESSION["userx"])) {
     $user = $_SESSION["userx"];
@@ -26,13 +25,14 @@ $result = mysqli_query($conn,"SELECT payer.user_name as 'user', board.name as 'b
         
 <?php
 echo '<div class="container">';
-echo $header;
+include_once './header.php';
+
 if($result->num_rows > 0) {
     echo '<strong>Boards:</strong><br>';
     while ($row = mysqli_fetch_assoc($result)) {
         echo '<a href="./delete-board.php?board=' . $row['board_id'] . '"><span class="delete-board">&#10005;</span></a> <a href="./board.php?board=' . $row['board_id'] . '">' . $row['board_name'] . '</a><br>';
     }
-    echo '<br><a href="./create-board.php">Create New board</a>';
+    // echo '<br><a href="./create-board.php">Create New board</a>';
 } else {
     echo '<a href="./create-board.php">Create your first board</a>';
 }

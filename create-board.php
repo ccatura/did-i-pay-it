@@ -1,7 +1,5 @@
 <?php
 session_start();
-include_once './header.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +16,7 @@ include_once './header.php';
 
 
 <div class="container">
-    <?php echo $header ?>
+    <?php include_once './header.php'; ?>
     <form action="./create-board-submit.php" method="post" class="form">
         <div><strong>Did I Pay It? | Create Account</strong></div>
         <div>Board Name
