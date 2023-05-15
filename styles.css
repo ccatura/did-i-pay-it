@@ -65,6 +65,17 @@ body {
 .checkboxes {
     display: flex;
     flex-flow: column nowrap;
+    margin-bottom: 2em;
+    position: relative;
+}
+
+.checkoff-container::before {
+    content: 'd';
+    width: 200px;
+    height: 40%;
+    background-color: rgba(0, 0, 0, 1);
+    position: absolute;
+    left: 20px;
 }
 
 .row,
@@ -196,7 +207,10 @@ a {
     margin-bottom: 2em;
 }
 
-
+.paragraph {
+    text-align: center;
+    margin: 0 2em 1em 2em;
+}
 
 
 
