@@ -23,8 +23,7 @@
 <div class="container">
     <form action="./login.php" method="post" class="form">
         <div><strong>Did I Pay It? | Login</strong></div>
-        <p class="paragraph">Welcome to "Did I Pay It?", a user-friendly bill tracking application that allows you to keep track of your monthly bills with ease.</p>
-        <p class="paragraph">Simply create boards, add payees, and check off the checkbox next to them to indicate that you have paid your bill. Your bill tracking data is securely stored in the cloud and can be accessed from any device with an internet connection. To get started, log in below or create a new account.</p>
+        <p class="paragraph">Welcome to "Did I Pay It?", a user-friendly application that allows you to keep track of your monthly bills with ease. Simply create boards, add payees, and check off the checkbox next to them to indicate that you have paid your bill. Your bill tracking data is securely stored in the cloud and can be accessed from any device with an internet connection. To get started, log in below or create a new account.</p>
 
         <div>User Name<div><input type="text" name="user" value="ccatura" required></div></div>
         <div>Password<div><input type="password" name="pword" value="abc123" required></div></div>

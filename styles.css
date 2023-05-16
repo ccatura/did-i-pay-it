@@ -72,19 +72,28 @@ body {
 .row,
 .rowx {
     display: flex;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .desc {
     position: sticky;
-    left: 15px;
+    left: -17px;
     z-index: 2;
+}
+
+.desc a {
+    transform: translateY(2px);
+    background-color: rgb(255,255,255,.8);
+    height: 30px;
+    width: 20px;
+    padding: 0 5px;
+    /* margin-right: .5px; */
 }
 
 .desc-heading,
 .desc,
 .descx {
-    width: 200px;
+    width: 210px;
     /* border: 1px solid red; */
     display: flex;
     justify-content: flex-start;
@@ -98,15 +107,15 @@ body {
     width: 150px;
     height: 100%;
     border: none;
-    padding: 10px;
-    background: rgb(255,255,255);
+    padding-left: 10px;
+    background: rgb(255,255,255, .8);
 }
 
 .payee {
     background-color: rgba(255, 255, 255, 0);
     font-weight: bold;
-    text-shadow: 0 0 2px white, 0 0 3px white, 0 0 4px white, 0 0 5px white, 0 0 6px white, 0 0 10px white, 0 0 10px white;
-    transform: translateY(3px);
+    /* text-shadow: 0 0 2px white, 0 0 3px white, 0 0 4px white, 0 0 5px white, 0 0 6px white, 0 0 10px white, 0 0 10px white; */
+    /* transform: translateY(3px); */
 }
 
 #months-container {
@@ -176,7 +185,7 @@ body {
 }
 
 .delete-row {
-    opacity: 0;
+    /* opacity: 0; */
 }
 
 .delete-row,
@@ -187,11 +196,12 @@ body {
 
 a {
     text-decoration: none;
+    text-align: center;
 }
 
 .row:hover .delete-row {
-    opacity: 1;
-    background-color: white;
+    /* opacity: 1; */
+    /* background-color: white; */
     /* outline: 5px solid white; */
 }
 

@@ -26,10 +26,7 @@
             $userx = $_SESSION["userx"];
             $pwordx = $_SESSION["pwordx"];
         
-            echo 'Data from previous page: <br>User name: ' . $userx . '<br>Password: ' . $pwordx . '<br><br>';
-
             $result = mysqli_query($conn,"SELECT * FROM `payer` WHERE user_name = '$userx' LIMIT 1;");
-
 
             while ($row = mysqli_fetch_assoc($result)) {
                 $pword = $row['pword'];
@@ -38,17 +35,14 @@
                 $_SESSION['user'] = $row['user_name'];
                 $_SESSION['name'] = $row['name'];
             }
-            echo $user . '<br>';
-            echo $pword . '<br>';
-            echo $name . '<br><br>';
 
-            if ($pwordx == $pword) {
-                header('Location: ./list-boards.php');
-                exit;
-            } else {
-                echo 'Passwords do not match - ' . $pwordx . ' DOES NOT EQUAL ' . $pword . '<br><br>';
-                echo '<a href="./">Try Again</a>';
-            }
+                if (isset($pword) && $pwordx == $pword) {
+                    header('Location: ./list-boards.php');
+                    exit;
+                } else {
+                    echo '<span style="color:red;font-weight:bold;">Password incorrect.</span> Unfortunately, this application is still in development, so there is no password recovery yet. Sorry.<br><br>';
+                    echo '<a href="./">Try Again</a>';
+                }
 
 
         ?>

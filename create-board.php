@@ -18,7 +18,7 @@ session_start();
 <div class="container">
     <?php include_once './header.php'; ?>
     <form action="./create-board-submit.php" method="post" class="form">
-        <div><strong>Did I Pay It? | Create Account</strong></div>
+        <div><strong>Did I Pay It? | Create Board</strong></div>
         <div>Board Name
             <div>
                 <input type="text" name="board-name" required>
