@@ -155,7 +155,7 @@
                     
             </div>
             <div><button id="check-all">Check All</button></div>
-            <div><a href="./add-board-row.php">Add Row</a></div>
+            <div><a href="./create-row.php">Add Row</a></div>
 
 
         </div>

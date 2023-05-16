@@ -69,15 +69,6 @@ body {
     position: relative;
 }
 
-.checkoff-container::before {
-    content: 'd';
-    width: 200px;
-    height: 40%;
-    background-color: rgba(0, 0, 0, 1);
-    position: absolute;
-    left: 20px;
-}
-
 .row,
 .rowx {
     display: flex;
@@ -105,7 +96,10 @@ body {
 .descx input {
     font-size: 16px;
     width: 150px;
+    height: 100%;
     border: none;
+    padding: 10px;
+    background: rgb(255,255,255);
 }
 
 .payee {
@@ -197,6 +191,8 @@ a {
 
 .row:hover .delete-row {
     opacity: 1;
+    background-color: white;
+    /* outline: 5px solid white; */
 }
 
 .header-container {
