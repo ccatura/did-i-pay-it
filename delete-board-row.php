@@ -3,7 +3,17 @@ include_once './db.php';
 
 session_start();
 
-$row_to_delete = $_GET['row_id'];
+if (isset($_SESSION['user'])) {
+   if (isset($_GET['row_id'])) {
+      $row_to_delete = $_GET['row_id'];
+   } else {
+      header('Location: ./list-boards.php');
+   }
+} else {
+   header('Location: ./');
+}
+
+
 $board = $_GET['board'];
 $sql_string = "DELETE FROM `board_row` WHERE `id` = $row_to_delete;";
 

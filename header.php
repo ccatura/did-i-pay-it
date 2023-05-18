@@ -9,8 +9,8 @@ echo '<div class="header-container">';
         echo  'Welcome ' . $name . '! Let\'s make your first board!<br><br>';
     } else {
         echo '<div><strong>' . $name . '</strong> (' . $user . ')</div>';
-        echo '<a href="./list-boards.php">Your Boards</a>';
-        echo '<br><a href="./create-board.php">New board</a>';
+        echo '<div><a href="./list-boards.php"><button>Boards</button></a></div>';
+        echo '<div><a href="./create-board.php"><button>New</button></a></div>';
     }
 // }
 
@@ -19,7 +19,7 @@ echo '<div class="header-container">';
     //     echo '<div><strong>' . $name . '</strong> (' . $user . ')</div>';
     // }
 // }
-echo '<a href="./logout.php">Logout</a>';
+echo '<div><a href="./logout.php"><button>Logout</button></a></div>';
 echo '</div>';
 
 

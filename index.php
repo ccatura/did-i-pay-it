@@ -6,6 +6,7 @@
     $_SESSION['lname'] = '';
     $_SESSION['user-taken'] = false;
     $_SESSION['user-created'] = false;
+    $_SESSION['submit-more'] = false;
     ?>
 
 <!DOCTYPE html>

@@ -10,6 +10,10 @@ body {
     background-color: rgb(221, 221, 221);
 }
 
+button {
+    width: 60px;
+}
+
 .container {
     margin: 1em;
     padding: 1em;
@@ -39,7 +43,7 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 10px;
+    top: 5px;
     left: calc(50% - calc(var(--autosave-width) / 2));
     width: var(--autosave-width);
     height: 40px;
@@ -210,6 +214,7 @@ a {
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: flex-start;
+    margin-top: 1em;
     margin-bottom: 2em;
 }
 

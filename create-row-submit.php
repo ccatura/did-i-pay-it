@@ -57,13 +57,20 @@ function check_payee_in_board($payee_id, $conn, $board_id, $user) {
    // If it does not exist, it commits it to the DB
    $sql_string = "SELECT `payee_id` FROM `board_row` WHERE `payee_id` = '$payee_id' AND `board_id` = '$board_id' LIMIT 1;";
    $result = mysqli_query($conn, $sql_string);
+   $_SESSION['row-just-added'] = $_POST['row-just-added'];
 
    if ($result->num_rows > 0) {
       return;
    } else {
       $sql_string = "INSERT INTO `board_row` (`payee_id`, `board_id`, `payer_id`) VALUES ('$payee_id', '$board_id','$user');";
-      $result = mysqli_query($conn, $sql_string);   
-      header('Location: ./board.php?board=' . $_SESSION['board']);
+      $result = mysqli_query($conn, $sql_string);
+      if (!isset($_POST['submit-more'])) {
+         $_SESSION['submit-more'] = false;
+         header('Location: ./board.php?board=' . $_SESSION['board']);
+      } else {
+         $_SESSION['submit-more'] = true;
+         header('Location: ./create-row.php');
+      }
       exit();
    }
 }

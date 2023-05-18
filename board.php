@@ -2,6 +2,7 @@
     include_once("./db.php");
     session_start();
     $_SESSION['user-created'] = false;
+    $_SESSION['submit-more'] = false;
 
     if (isset($_GET["board"])) {
         $board = $_GET["board"];
@@ -123,7 +124,7 @@
                             $checkbox_group_html    = '';
 
                             echo '<div class="row" row-id="' . $board_row_id . '" board_id="' . $board_row_board_id . '" order="' . $order . '">';
-                            echo '<div class="desc"><a href="./delete-board-row.php?row_id=' . $board_row_id . '&board=' . $board_row_board_id . '"><span class="delete-row" row-id="' . $board_row_id . '">&#10005;</span></a><input class="payee" type="text" value="' . $payee_name . '" row-id="' . $board_row_id . '" payee-id="' . $payee_id . '"></div>';
+                            echo '<div class="desc"><a href="./delete-board-row.php?row_id=' . $board_row_id . '&board=' . $board_row_board_id . '"><span class="delete-row" row-id="' . $board_row_id . '">&#10005;</span></a><input class="payee" type="text" value="' . $payee_name . '" row-id="' . $board_row_id . '" payee-id="' . $payee_id . '" title="' . $payee_name . '"></div>';
                             echo '<div class="checks-container">';
 
 
@@ -155,7 +156,7 @@
                     
             </div>
             <div><button id="check-all">Check All</button></div>
-            <div><a href="./create-row.php">Add Row</a></div>
+            <div><a href="./create-row.php">Add Payee</a></div>
 
 
         </div>

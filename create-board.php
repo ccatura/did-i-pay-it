@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (isset($_SESSION["userx"])) {
+    $user = $_SESSION["userx"];
+} else {
+    header('Location: ./');
+}
 ?>
 
 <!DOCTYPE html>
