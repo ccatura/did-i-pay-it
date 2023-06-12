@@ -7,6 +7,7 @@
     $_SESSION['user-taken'] = false;
     $_SESSION['user-created'] = false;
     $_SESSION['submit-more'] = false;
+    $_SESSION['updated'] = false;
     ?>
 
 <!DOCTYPE html>
