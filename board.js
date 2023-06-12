@@ -179,7 +179,7 @@ function countdown() {
                     if (rows[a].getAttribute('row-id') == payees[b].getAttribute('row-id')) {
                         for (var c = 0; c < checkboxes.length; c++) { // All checkboxes for above payee
                             if (payees[b].getAttribute('row-id') == checkboxes[c].getAttribute('row-id')) { // Each checkbox individually
-                                data.push({board_id:board, row_id:rows[a].getAttribute('row-id'), payee_id:payees[b].getAttribute('payee-id'), checkbox_id:checkboxes[c].checked});
+                                data.push({board_id:board, row_id:rows[a].getAttribute('row-id'), payee_id:payees[b].getAttribute('payee-id'), payee_name:payees[b].value, checkbox_id:checkboxes[c].checked});
                             }
                         }
                     }

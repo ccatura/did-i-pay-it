@@ -28,6 +28,9 @@ include_once './db.php';
             $row_count++;
             $sql_string = 'UPDATE `board_row` SET ';
             $prev = $data[$i]['row_id'];
+
+            
+
             for ($j=0; $j < count($data); $j++) { // Checkboxes for each row inside here
                if ($data[$j]['row_id'] == $prev) {
                   $month_name = strtolower(date("F", mktime(0, 0, 0, $month_count, 10)));
@@ -49,6 +52,20 @@ include_once './db.php';
                   } else {
                      $month_count = 1;
                      $sql_string .= 'WHERE `payee_id` = ' . $data[$i]['payee_id'] . ' AND board_id = ' . $data[$i]['board_id'] . '; ';
+
+                     //check if webpage payee name matches DB payee name
+                     $sql_check_payee = 'SELECT `id` FROM `payee` WHERE `name` = \'' . $data[$i]["payee_name"] . '\'';
+
+                     if ($result = mysqli_query($conn, $sql_check_payee)) {
+                        // echo 'Rows returned: ' . $result->num_rows . ' <br> ';
+                        if ($result->num_rows == 0) {
+                           // here we check what the new name is against the db.
+                           // if we find it, we replace the current payee-id with the newly found one
+                           // if not, we make a new payee and replace it with the NEW payee-id
+                        }
+                     } else {
+                        echo "Error: " . $sql_string . ":-" . mysqli_error($conn);
+                     }
                   }
                }
             }

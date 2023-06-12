@@ -36,9 +36,26 @@ if($result->num_rows > 0) {
 } else {
     echo '<a href="./create-board.php">Create your first board</a>';
 }
+    // $_SESSION['updated'] = false;
+
 ?>
 
     </div>
+
+<script>
+    var updated = document.getElementById('updated');
+    var x;
+    if (updated) {
+        updated.style.opacity = 1;
+        clearInterval(x);
+        var fadeIn = setTimeout(() => {
+            updated.style.opacity = 0;
+            var resetUpdated = setTimeout(() => {
+            }, 2000);
+        }, 2000);    }
+</script>
+
+
 </body>
 </html>
 
