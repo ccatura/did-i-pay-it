@@ -29,8 +29,8 @@ $lname = $_SESSION['lname'] ? : '';
             }
         ?>
         </div></div>
-        <div>First Name<div><input type="text" name="fname" value="<?php echo $lname;?>" required></div></div>
-        <div>Last Name<div><input type="text" name="lname" value="<?php echo $fname;?>" required></div></div>
+        <div>First Name<div><input type="text" name="fname" value="<?php echo $fname;?>" required></div></div>
+        <div>Last Name<div><input type="text" name="lname" value="<?php echo $lname;?>" required></div></div>
         <div>Password<div><input type="password" name="pword" required></div></div>
         <div>Confirm Password<div><input type="password" name="pword-confirm" required></div></div>
         <div><input type="submit" name="submit" value="Create Account"></input></div>

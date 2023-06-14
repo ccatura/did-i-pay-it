@@ -80,9 +80,21 @@ button {
     margin-bottom: 10px;
 }
 
-.desc {
+.bottom-buttons {
+    width: 80vw;
+}
+
+.desc,
+.header-container {
     position: sticky;
     left: -17px;
+    z-index: 2;
+}
+
+.header-container,
+.bottom-buttons {
+    position: sticky;
+    left: 0;
     z-index: 2;
 }
 
@@ -183,7 +195,6 @@ button {
     display: flex;
     justify-content: space-between;
 }
-
 
 .desc input:focus {
     background-color: yellow;

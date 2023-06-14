@@ -3,6 +3,7 @@
     session_start();
     $_SESSION['user-created'] = false;
     $_SESSION['submit-more'] = false;
+    $_SESSION['updated'] = false;
 
     if (isset($_GET["board"])) {
         $board = $_GET["board"];
@@ -155,9 +156,11 @@
 
                     
             </div>
-            <div><button id="check-all">Check All</button></div>
-            <div><a href="./create-row.php">Add Payee</a></div>
-
+            <div class="bottom-buttons">
+                <button style="width:100px;"><a href="./create-row.php">Add Payee</a></button>
+                <button style="width:100px;"><a href="#" id="check-all">Check All</a></button>
+            </div>
+            <!-- <input type="checkbox" id="check-all" class="alt-checkbox" value="&#x2713;"> -->
 
         </div>
     </div>

@@ -35,7 +35,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo 'User Name: <span id="user-name-disabled"><input type="text" value = "' . $row['user_name'] . '"disabled></span><br><br>';
     echo 'Name: <input type="text" name="name" value = "' . $row['name'] . '" id="name"><br><br>';
     echo 'Email: <input type="text" value = "' . $row['email'] . '" id="email"><br><br>';
-    echo 'New Password: <input type="text" value = "' . $row['pword'] . '" id="pword"><br><br>';
+    echo 'New Password: <input type="password" value = "' . $row['pword'] . '" id="pword"><br><br>';
 }
 
 

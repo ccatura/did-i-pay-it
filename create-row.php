@@ -46,7 +46,7 @@ session_start();
         </div>
         <div>Or</div>
         <div><input type="text" name="payee-name-input" id="payee-name-input" placeholder="Enter new payee"></div>
-        <div><input type="submit" name="submit" value="Add Once" id="submit" disabled> <input type="submit" name="submit-more" id="submit-more" value="Add Multiple" disabled></div>
+        <div><input type="submit" name="submit" value="Add And Go Back" id="submit" disabled> <input type="submit" name="submit-more" id="submit-more" value="Add Multiple" disabled></div>
 
 
     </form>

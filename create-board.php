@@ -1,5 +1,7 @@
 <?php
 session_start();
+$_SESSION['updated'] = false;
+
 if (isset($_SESSION["userx"])) {
     $user = $_SESSION["userx"];
 } else {
