@@ -34,7 +34,7 @@
         <div><a href="./create-account.php">Create Account</a></div>
     </form>
 
-    <div style="position: relative; padding-bottom: 56.25%;"><iframe src="https://www.loom.com/embed/b9293d71c9204132878c8b832a28dbb7?sid=b72df913-228e-4b5d-89a7-1ba6161c0432" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+    <!-- <div style="position: relative; padding-bottom: 56.25%;"><iframe src="https://www.loom.com/embed/b9293d71c9204132878c8b832a28dbb7?sid=b72df913-228e-4b5d-89a7-1ba6161c0432" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div> -->
 
 </div>
 
